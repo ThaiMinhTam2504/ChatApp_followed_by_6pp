@@ -49,3 +49,38 @@ export const sampleNotifications = [
         _id: '2',
     }
 ]
+
+export const sampleMessage = [
+    {
+        attachments: [
+            {
+                public_id: 'assadas',
+                url: 'https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/Image%20FP_2024/hinh-anime-2.jpg'
+            }
+        ],
+        content: 'Hello, this is a sample message.',
+        _id: 'sdsadadsa',
+        sender: {
+            _id: 'user._id',
+            name: 'jackie nam',
+        },
+        chat: 'chatId',
+        createdAt: '2024-02-12T10:41:30.630Z'
+    },
+    {
+        attachments: [
+            {
+                public_id: 'assadas222',
+                url: 'https://gamek.mediacdn.vn/133514250583805952/2024/10/2/image-10-1024x576-1727854663787258839106-1727863657755-1727863657841193857596.png'
+            }
+        ],
+        content: 'baby dont hurt me, no more, please',
+        _id: 'sdsadadsa1122',
+        sender: {
+            _id: 'asdasdafff',
+            name: 'rick roll',
+        },
+        chat: 'chatId',
+        createdAt: '2024-02-12T10:41:30.630Z'
+    },
+]
