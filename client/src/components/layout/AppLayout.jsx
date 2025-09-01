@@ -40,7 +40,16 @@ const AppLayout = () => (WrappedComponent) => {
                         md={3}
                         lg={3}
                         height="100%"
-                        sx={{ display: { xs: 'none', sm: 'block', minWidth: '20%' } }}
+                        sx={{
+                            display: {
+                                xs: 'none', sm: 'block',
+                            },
+                            minWidth: {
+                                md: '25%',
+                                lg: '25%',
+                                xl: '15%'
+                            }
+                        }}
                     // sx={{ display: { xs: 'none', sm: 'block' }, bgcolor: 'yellow', maxWidth: 280, flexBasis: 280, flexGrow: 0, flexShrink: 0 }}
                     >
                         <Chatlist
@@ -63,7 +72,15 @@ const AppLayout = () => (WrappedComponent) => {
                         md={5}
                         lg={6}
                         height="100%"
-                        sx={{ minWidth: '60%' }}
+                        sx={{
+                            minWidth: {
+                                xs: '100%',
+                                sm: '75%',
+                                md: '50%',
+                                lg: '50%',
+                                xl: '65%'
+                            }
+                        }}
                     >
                         <WrappedComponent {...props} />
                     </Grid>
@@ -82,7 +99,13 @@ const AppLayout = () => (WrappedComponent) => {
                             padding: "2rem",
                             bgcolor: "rgba(0,0,0,0.85)",
                             color: "#fff",
-                            minWidth: '20%'
+                            minWidth: {
+                                xs: '0%',
+                                sm: '0%',
+                                md: '25%',
+                                lg: '25%',
+                                xl: '20%'
+                            }
                         }}
                     >
                         <Profile />

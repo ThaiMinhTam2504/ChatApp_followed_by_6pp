@@ -12,7 +12,113 @@ export const sampleChats = [
         _id: "2",
         groupChat: true,
         members: ["1", "2"],
-    }
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "3",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "4",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "5",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "6",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "7",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "8",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "9",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "10",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "11",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "12",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "13",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "14",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "15",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "16",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+    {
+        avatar: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s", "https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg", "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg"],
+        name: "John Boi",
+        _id: "17",
+        groupChat: true,
+        members: ["1", "2"],
+    },
+
 ]
 
 export const sampleUsers = [
@@ -30,7 +136,67 @@ export const sampleUsers = [
         avatar: "https://img.freepik.com/free-vector/smiling-young-man-illustration_1308-174669.jpg",
         name: "John Smith",
         _id: "3"
-    }
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "John",
+        _id: "4"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "Johnson",
+        _id: "5"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "John cena",
+        _id: "6"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "Johnathan",
+        _id: "7"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "Johnathan",
+        _id: "8"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "Josh",
+        _id: "9"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "John Doe",
+        _id: "1"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "Jjjj",
+        _id: "10"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "John john",
+        _id: "11"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "JohnDDD",
+        _id: "12"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "Diddy",
+        _id: "13"
+    },
+    {
+        avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s",
+        name: "John doe doe",
+        _id: "14"
+    },
 ]
 
 export const sampleNotifications = [
@@ -84,3 +250,4 @@ export const sampleMessage = [
         createdAt: '2024-02-12T10:41:30.630Z'
     },
 ]
+
