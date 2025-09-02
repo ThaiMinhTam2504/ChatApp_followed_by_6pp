@@ -1,6 +1,6 @@
 import React, { lazy, memo, Suspense, useEffect, useState } from 'react'
 import { Avatar, Backdrop, Box, Button, Drawer, Grid, IconButton, Stack, TextField, Tooltip, Typography } from '@mui/material'
-import { bgGradient, matBlack, orange } from '../components/constants/color'
+import { bgGradient, bgGradientForMembersList, matBlack, orange } from '../components/constants/color'
 import { Add as AddIcon, Delete as DeleteIcon, Done as DoneIcon, Edit as EditIcon, KeyboardBackspace as KeyboardBackspaceIcon, Menu as MenuIcon } from '@mui/icons-material'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Link } from '../components/styles/StyledComponents'
@@ -147,7 +147,7 @@ const Groups = () => {
         <Button size='large' color='error' startIcon={<DeleteIcon />} onClick={openConfirmDeleteHandler}>Delete Group</Button>
         <Button size='large' variant='contained' startIcon={<AddIcon />} onClick={openAddMemberHandler}>Add member</Button>
     </Stack>
-    return <Grid container height={'100vh'}>
+    return <Grid container height={'100vh'} >
         <Grid
             item
             sx={{
@@ -155,7 +155,13 @@ const Groups = () => {
                     xs: 'none',
                     sm: 'block'
                 },
-                minWidth: '20%',
+                minWidth: {
+                    xs: '0',
+                    sm: '30%',
+                    md: '40%',
+                    lg: '30%',
+                    xl: '20%'
+                }
 
             }}
             sm={4}
@@ -176,8 +182,13 @@ const Groups = () => {
                 alignItems: 'center',
                 position: 'relative',
                 padding: '1rem 3rem',
-                minWidth: '80%'
-
+                minWidth: {
+                    xs: '100%',
+                    sm: '70%',
+                    md: '60%',
+                    lg: '70%',
+                    xl: '80%'
+                }
             }}
         >
             {IconBtns}
@@ -186,7 +197,7 @@ const Groups = () => {
                 GroupName && <>
                     {GroupName}
 
-                    <Typography>Members</Typography>
+                    <Typography variant='h5' color='primary' >Members List</Typography>
 
                     <Stack
                         maxWidth={'45rem'}
@@ -198,7 +209,7 @@ const Groups = () => {
                             md: '1rem 4rem'
                         }}
                         spacing={'2rem'}
-                        bgcolor={'seashell'}
+                        bgcolor={'white'}
                         height={'50vh'}
                         overflow={'auto'}
                     >
@@ -265,9 +276,13 @@ const Groups = () => {
 }
 
 const GroupList = ({ w = '100%', myGroups = [], chatId }) => (
-    <Stack width={w} height={'100vh'} overflow={'auto'} sx={{
-        backgroundImage: bgGradient,
-    }} >
+    <Stack
+        width={w}
+        sx={{
+            backgroundImage: bgGradient,
+            height: '100vh',
+            overflow: 'auto'
+        }} >
         {
             myGroups.length > 0
                 ? myGroups.map((group) => <GroupListItem group={group} chatId={chatId} key={group._id} />)
