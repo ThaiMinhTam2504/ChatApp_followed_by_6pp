@@ -123,13 +123,17 @@ const AdminLayout = ({ children }) => {
         </Box>
         <Grid
             item
-            md={4}
+            md={3}
+            sm={3}
             lg={3}
             sx={{
                 display: { xs: 'none', md: 'block' },
                 minWidth: {
                     xs: '0%',
+                    sm: '33%',
                     md: '33%',
+                    lg: '33%',
+                    xl: '20%'
                 }
             }}
         >
@@ -139,14 +143,17 @@ const AdminLayout = ({ children }) => {
         <Grid
             item
             xs={12}
-            md={8}
+            sm={9}
+            md={9}
             lg={9}
             sx={{
                 bgcolor: '#f5f5f5',
                 minWidth: {
                     xs: '100%',
+                    sm: '67%',
                     md: '67%',
-
+                    lg: '67%',
+                    xl: '80%'
                 }
             }}
         >

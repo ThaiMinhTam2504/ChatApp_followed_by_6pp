@@ -251,3 +251,84 @@ export const sampleMessage = [
     },
 ]
 
+
+export const dashboardData = {
+    users: [
+        {
+            name: 'John Doe',
+            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s',
+            _id: '1',
+            username: 'johndoe',
+            friends: 20,
+            groups: 5
+        },
+        {
+            name: 'John Boi',
+            avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s',
+            _id: '2',
+            username: 'johnboi',
+            friends: 15,
+            groups: 3
+        }
+    ],
+    chats: [
+        {
+            name: 'Diddy Group',
+            avatar: ['https://avatarfiles.alphacoders.com/285/thumb-1920-285015.png'],
+            _id: '1',
+            groupChat: false,
+            members: [{ id: '1', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s' }, { id: '2', avatar: 'https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg' }],
+            totalMembers: 2,
+            totalMessages: 5,
+            creator: {
+                name: 'John Boi',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s'
+            }
+        },
+        {
+            name: 'Hello World',
+            avatar: ['https://forge.univ-lyon1.fr/uploads/-/system/project/avatar/15740/hellow.jpg'],
+            _id: '2',
+            groupChat: true,
+            members: [{ id: '1', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s' }, { id: '2', avatar: 'https://img.freepik.com/premium-vector/person-with-blue-shirt-that-says-name-person_1029948-7040.jpg' }],
+            totalMembers: 2,
+            totalMessages: 15,
+            creator: {
+                name: 'John Boi',
+                avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyGo8XzszXwJThST5wxfqGFehUkRrVS6Njdw&s'
+            }
+        }
+    ],
+    messages: [
+        {
+            attachments: [],
+            content: 'dsadsahgeheadsa12312312',
+            _id: 'dazxxz',
+            sender: {
+                avatar: 'https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/Image%20FP_2024/hinh-anime-2.jpg',
+                _id: 'user._id',
+                name: 'Channel User'
+            },
+            chat: 'ChatId',
+            createdAt: '2024-02-12T10:41:30.630Z',
+            groupChat: false,
+        },
+
+        {
+            attachments: [{
+                public_id: 'asdsad 2',
+                url: 'https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/Image%20FP_2024/hinh-anime-2.jpg'
+            }],
+            content: 'Content',
+            _id: '121zzx',
+            sender: {
+                avatar: 'https://cdn11.dienmaycholon.vn/filewebdmclnew/public/userupload/files/Image%20FP_2024/hinh-anime-2.jpg',
+                _id: 'dsadazxcxzjkjh',
+                name: 'hentai User'
+            },
+            chat: 'ChatId',
+            createdAt: '2024-02-12T10:41:30.630Z',
+            groupChat: true,
+        }
+    ]
+}

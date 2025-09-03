@@ -5,6 +5,7 @@ import { AdminPanelSettings as AdminPanelSettingsIcon, Group as GroupIcon, Messa
 import moment from 'moment'
 import { SearchField, CurveButton } from '../../components/styles/StyledComponents'
 import { matBlack } from '../../components/constants/color'
+import { DoughnutChart, LineChart } from '../../components/specific/Chart'
 
 const Dashboard = () => {
     const Appbar = <Paper elevation={3} sx={{
@@ -52,9 +53,17 @@ const Dashboard = () => {
 
 
                 <Stack
-                    direction={'row'}
+                    direction={{
+                        xs: 'column',
+                        lg: 'row'
+                    }}
                     spacing={'2rem'}
                     flexWrap={'wrap'}
+                    justifyContent={'center'}
+                    alignItems={{
+                        xs: 'center',
+                        lg: 'stretch'
+                    }}
                 >
                     <Paper
                         elevation={3}
@@ -63,12 +72,12 @@ const Dashboard = () => {
                             borderRadius: '1rem',
                             width: '100%',
                             maxWidth: '45rem',
-                            height: '25rem',
                         }}
                     >
                         <Typography margin={'2rem 0'} variant='h4' >Last Messages</Typography>
 
-                        {'Chat'}
+                        <LineChart value={[23, 52, 21, 55, 66]} />
+
                     </Paper>
 
 
@@ -84,10 +93,9 @@ const Dashboard = () => {
                             position: 'relative',
                             width: '100%',
                             maxWidth: '25rem',
-                            height: '25rem'
                         }}
                     >
-                        {" Doughnut Chart"}
+                        <DoughnutChart labels={['Single Chats', 'Group Chats']} value={[23, 66]} />
 
                         <Stack
                             position={'absolute'}
