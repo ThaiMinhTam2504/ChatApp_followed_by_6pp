@@ -11,7 +11,7 @@ import { User } from "../models/user.js";
 const newGroupChat = TryCatch(async (req, res, next) => {
     const { name, members } = req.body
 
-    if (members.length < 2) return next(new ErrorHandler("At least 2 members are required to form a group chat", 400))
+    // if (members.length < 2) return next(new ErrorHandler("At least 2 members are required to form a group chat", 400))
 
     const allMembers = [...members, req.user]
 
@@ -90,11 +90,11 @@ const addMembers = TryCatch(async (req, res, next) => {
 
     const { chatId, members } = req.body
 
-    if (!members || members.length < 1) return next(new ErrorHandler('Please provide members to add', 400))
+    // if (!members || members.length < 1) return next(new ErrorHandler('Please provide members to add', 400))
 
     const chat = await Chat.findById(chatId)
     if (!chat) return next(new ErrorHandler("Chat not found", 404))
-    if (!chat.groupChat) return next(new ErrorHandler("You can only add members to group chat", 400))
+    if (!chat.groupChat) return next(new ErrorHandler("You can only add members to group chat. This might be a private chat", 400))
     if (chat.creator.toString() !== req.user.toString()) {
         return next(new ErrorHandler("Only group admin can add members", 403))
     }
@@ -127,6 +127,8 @@ const addMembers = TryCatch(async (req, res, next) => {
 const removeMembers = TryCatch(async (req, res, next) => {
 
     const { userId, chatId } = req.body
+
+    console.log('userId:', userId)
 
     const [chat, userThatWillBeRemoved] = await Promise.all([
         Chat.findById(chatId),
@@ -208,7 +210,7 @@ const sendAttachments = TryCatch(async (req, res, next) => {
 
 
     const files = req.files || []
-    if (files.length < 1) return next(new ErrorHandler("Please provide attachments", 400))
+    // if (files.length < 1) return next(new ErrorHandler("Please provide attachments", 400))
 
     //Upload files here
     const attachments = []

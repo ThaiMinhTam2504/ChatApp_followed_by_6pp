@@ -6,7 +6,7 @@ import { ErrorHandler } from '../utils/utility.js'
 
 
 //Create a new user and save it to the database and save token in cookies
-const newUser = async (req, res) => {
+const newUser = TryCatch(async (req, res) => {
 
     const { name, username, password, bio } = req.body
 
@@ -25,7 +25,7 @@ const newUser = async (req, res) => {
 
     sendToken(res, user, 201, 'User created successfully')
 
-}
+})
 
 //Login user and send token in cookies
 const login = TryCatch(async (req, res, next) => {

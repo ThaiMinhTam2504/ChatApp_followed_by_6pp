@@ -9,6 +9,6 @@ const multerUpload = multer({
 
 const singleAvatar = multerUpload.single('avatar')
 
-const attachmentsMulter = multerUpload.array('files', 5)
+const attachmentsMulter = multerUpload.array('files') //max 5 files, check in checkAttachments.js
 
 export { singleAvatar, attachmentsMulter }
