@@ -1,6 +1,6 @@
 import { TryCatch } from "../middlewares/error.js";
 import { ErrorHandler } from "../utils/utility.js";
-import { Chat } from "../models/Chat.js";
+import { Chat } from "../models/chat.js";
 import { Message } from '../models/message.js'
 import { deleteFilesFromCloudinary, emitEvent } from "../utils/features.js";
 import { ALERT, NEW_ATTACHMENT, NEW_MESSAGE_ALERT, REFETCH_CHATS } from '../constants/events.js'
