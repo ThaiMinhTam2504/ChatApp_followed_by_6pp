@@ -65,7 +65,6 @@ const sendAttachmentsValidator = () => [
 
 const chatIdValidators = () => [
     param('id', 'Please enter a chat ID').notEmpty(),
-    query('page').isInt({ min: 1 }).withMessage('Page must be a positive integer'),
 ]
 
 const renameValidator = () => [
@@ -82,6 +81,9 @@ const acceptRequestValidator = () => [
     body('accept').notEmpty().withMessage('Please specify whether to accept or reject the request').isBoolean().withMessage('Accept must be a boolean value')
 ]
 
+const adminLoginValidator = () => [
+    body('secretKey', 'Please provide a secret key').notEmpty()
+]
 
 
 
@@ -117,5 +119,6 @@ export {
     chatIdValidators,
     renameValidator,
     sendRequestValidator,
-    acceptRequestValidator
+    acceptRequestValidator,
+    adminLoginValidator
 }

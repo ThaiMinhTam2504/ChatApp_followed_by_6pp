@@ -1,6 +1,8 @@
+import { ErrorHandler } from "../utils/utility.js";
+
 const checkAvatar = (req, res, next) => {
     if (!req.file) {
-        return res.status(400).json({ success: false, message: "Please upload an avatar" })
+        return next(new ErrorHandler("Please provide an avatar", 400));
     }
     next();
 }

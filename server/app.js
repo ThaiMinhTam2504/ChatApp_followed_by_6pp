@@ -16,6 +16,8 @@ dotenv.config({
 })
 const mongoURL = process.env.MONGO_URL
 const port = 3000 || process.env.PORT
+const envMode = process.env.NODE_ENV.trim() || 'PRODUCTION'
+const adminSecretKey = process.env.ADMIN_SECRET_KEY || 'koregajiyuda'
 connectDb(mongoURL)
 
 // createUser(10)
@@ -45,5 +47,10 @@ app.use(errorMiddleware)
 
 
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
+    console.log(`Server is running on port ${port} in ${envMode} Mode.`)
 })
+
+export {
+    envMode,
+    adminSecretKey
+}
