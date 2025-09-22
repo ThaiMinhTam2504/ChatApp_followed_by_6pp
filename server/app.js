@@ -6,14 +6,16 @@ import cookieParser from 'cookie-parser'
 import { Server } from 'socket.io'
 import { createServer } from 'http'
 import { v4 as uuid } from 'uuid'
+import cors from 'cors'
 
 import userRoute from './routes/user.js'
 import chatRoute from './routes/chat.js'
 import adminRoute from './routes/admin.js'
 import { createUser } from './seeders/user.js'
 import { createGroupChats, createMessages, createMessagesInAChat, createSingleChats } from './seeders/chat.js'
-import { NEW_MESSAGE } from './constants/events.js'
+import { NEW_MESSAGE, NEW_MESSAGE_ALERT } from './constants/events.js'
 import { getSockets } from './lib/helper.js'
+import { Message } from './models/message.js'
 
 
 
@@ -42,15 +44,22 @@ const io = new Server(server, {})
 //Using middlewares
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors({
+    origin: 'http://localhost:5173',
+    credentials: true,
+}))
 
 
 
-app.use('/user', userRoute)
-app.use('/chat', chatRoute)
-app.use('/admin', adminRoute)
+app.use('/api/v1/user', userRoute)
+app.use('/api/v1/chat', chatRoute)
+app.use('/api/v1/admin', adminRoute)
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
+})
+io.use((socket, next) => {
+
 })
 
 io.on('connection', (socket) => {
@@ -62,7 +71,6 @@ io.on('connection', (socket) => {
     console.log(userSocketIDs);
 
     socket.on(NEW_MESSAGE, async ({ chatId, members, message }) => {
-
         const messageForRealTime = {
             content: message,
             _id: uuid(),
@@ -70,19 +78,31 @@ io.on('connection', (socket) => {
                 _id: user._id,
                 name: user.name
             },
-            chatId: chatId,
-            createdAt: new Date().toISOString()
+            chat: chatId,
+            createdAt: new Date().toISOString(),
         }
+
 
         const messageForDB = {
             content: message,
             sender: user._id,
             chat: chatId
-        }
+        };
 
         const membersSocket = getSockets(members)
+        io.to(membersSocket).emit(NEW_MESSAGE, {
+            chatId,
+            message: messageForRealTime
+        })
+        io.to(membersSocket).emit(NEW_MESSAGE_ALERT, { chatId })
 
-        console.log('New Message:', messageForRealTime);
+        // console.log('New Message console log:', messageForRealTime);
+        try {
+            await Message.create(messageForDB)
+        }
+        catch (err) {
+            console.log(err);
+        }
     })
 
     socket.on('disconnect', () => {

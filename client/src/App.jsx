@@ -1,9 +1,11 @@
-import React, { lazy } from 'react'
+import React, { lazy, useEffect } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProtectRoute from './components/auth/ProtectRoute'
 import AppLayout from './components/layout/AppLayout'
 import { Suspense } from 'react'
 import Loader from './components/layout/Loader'
+import axios from 'axios'
+import { server } from './components/constants/config'
 // import './index.css'
 
 const Home = lazy(() => import("./pages/Home"))
@@ -20,6 +22,14 @@ const ChatManagement = lazy(() => import("./pages/admin/ChatManagement"))
 let user = true
 
 const App = () => {
+  // console.log(server)
+  useEffect(() => {
+    const fetchUser = async () => {
+      axios.get(`${server}/api/v1/user/me`)
+    }
+    fetchUser()
+  }, [])
+
   const HomeWithLayOut = AppLayout()(Home)
   const ChatWithLayOut = AppLayout()(Chat)
 
