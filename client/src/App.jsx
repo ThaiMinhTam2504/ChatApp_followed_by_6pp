@@ -6,6 +6,9 @@ import { Suspense } from 'react'
 import Loader from './components/layout/Loader'
 import axios from 'axios'
 import { server } from './components/constants/config'
+import { useDispatch, useSelector } from 'react-redux'
+import { userNotExists } from './redux/reducers/auth'
+import { Toaster } from 'react-hot-toast'
 // import './index.css'
 
 const Home = lazy(() => import("./pages/Home"))
@@ -19,21 +22,27 @@ const UserManagement = lazy(() => import("./pages/admin/UserManagement"))
 const MessageManagement = lazy(() => import("./pages/admin/MessageManagement"))
 const ChatManagement = lazy(() => import("./pages/admin/ChatManagement"))
 
-let user = true
+// let user = true
 
 const App = () => {
   // console.log(server)
+  const { user, loader } = useSelector(state => state.auth)
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    const fetchUser = async () => {
-      axios.get(`${server}/api/v1/user/me`)
-    }
-    fetchUser()
-  }, [])
+
+    axios
+      .get(`${server}/api/v1/user/me`)
+      .then((res) => console.log(res))
+      .catch((err) => dispatch(userNotExists()))
+  }, [dispatch])
 
   const HomeWithLayOut = AppLayout()(Home)
   const ChatWithLayOut = AppLayout()(Chat)
 
-  return <BrowserRouter>
+  return loader ? (
+    <Loader />
+  ) : (<BrowserRouter>
     <Suspense fallback={<Loader />}>
       <Routes>
 
@@ -60,7 +69,8 @@ const App = () => {
 
       </Routes>
     </Suspense>
-  </BrowserRouter>
+    <Toaster position='bottom-center' />
+  </BrowserRouter>)
 }
 
 export default App

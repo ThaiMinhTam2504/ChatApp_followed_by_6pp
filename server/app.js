@@ -7,6 +7,7 @@ import { Server } from 'socket.io'
 import { createServer } from 'http'
 import { v4 as uuid } from 'uuid'
 import cors from 'cors'
+import { v2 as cloudinary } from 'cloudinary'
 
 import userRoute from './routes/user.js'
 import chatRoute from './routes/chat.js'
@@ -29,6 +30,12 @@ const envMode = process.env.NODE_ENV.trim() || 'PRODUCTION'
 const adminSecretKey = process.env.ADMIN_SECRET_KEY || 'koregajiyuda'
 const userSocketIDs = new Map()
 connectDb(mongoURL)
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+})
+
 
 // createUser(10)
 // createSingleChats(2)
@@ -45,7 +52,7 @@ const io = new Server(server, {})
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: ['http://localhost:5173', 'http://localhost:3000', process.env.CLIENT_URL],
     credentials: true,
 }))
 

@@ -4,6 +4,10 @@ import React, { lazy, Suspense, useState } from 'react'
 import { Menu as MenuIcon, Search as SearchIcon, Add as AddIcon, Group as GroupIcon, Logout as LogoutIcon, Notifications as NotificationsIcon } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
 import Search from '../specific/Search'
+import axios from 'axios'
+import { server } from '../constants/config'
+import { useDispatch } from 'react-redux'
+import { userNotExists } from '../../redux/reducers/auth'
 
 const Header = () => {
 
@@ -13,6 +17,7 @@ const Header = () => {
     const [isSearch, setIsSearch] = useState(false)
     const [isNewGroup, setIsNewGroup] = useState(false)
     const [isNotification, setIsNotification] = useState(false)
+    const dispatch = useDispatch()
 
     const SearchDialog = lazy(() => import('../specific/Search'))
     const NotificationDialog = lazy(() => import('../specific/Notifications'))
@@ -40,8 +45,13 @@ const Header = () => {
         navigate('/groups')
     }
 
-    const logoutHandler = () => {
-
+    const logoutHandler = async () => {
+        try {
+            await axios.post(`${server}/api/v1/user/logout`, {}, { withCredentials: true })
+            dispatch(userNotExists())
+        } catch (error) {
+            console.log(error)
+        }
     }
     return (
         <>
@@ -56,6 +66,8 @@ const Header = () => {
                         }}>
                             Chat App
                         </Typography>
+
+
                         <Box sx={{
                             display: { xs: 'block', sm: 'none' },
                         }}>
