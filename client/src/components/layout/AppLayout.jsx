@@ -6,11 +6,16 @@ import Chatlist from '../specific/Chatlist'
 import { sampleChats } from '../constants/sampleData'
 import { useParams } from 'react-router-dom'
 import Profile from '../specific/Profile'
+import { useMyChatsQuery } from '../../redux/api/api'
 
 const AppLayout = () => (WrappedComponent) => {
     return (props) => {
         const params = useParams()
         const chatId = params.chatId
+
+        const { isLoading, data, isError, error, refetch } = useMyChatsQuery('')
+
+        console.log(data)
 
         const handleDeleteChat = (e, _id, groupChat) => {
 

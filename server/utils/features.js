@@ -2,6 +2,7 @@ import mongoose from "mongoose"
 import jwt from "jsonwebtoken"
 import cloudinary from "cloudinary"
 import { v4 as uuid } from 'uuid'
+import { getBase64 } from "../lib/helper.js"
 
 const cookieOptions =
 {
@@ -47,14 +48,30 @@ const uploadFilesToCloudinary = async (files = []) => {
     //và trường hợp allSettled thì dễ tính hơn trả về trạng thái cho các promise trạng thái resolve và reject nó đều trả về
     const uploadPromises = files.map((file) => {
         return new Promise((resolve, reject) => {
-            cloudinary.v2.uploader.upload(file.path, {
-                resource_type: 'auto', public_id: uuid()
-            }, (error, result) => {
-                if (error) return reject(error)
-                resolve(result)
-            })
+            cloudinary.v2.uploader.upload(
+                getBase64(file),
+                {
+                    resource_type: 'auto', public_id: uuid()
+                },
+                (error, result) => {
+                    if (error) return reject(error)
+                    resolve(result)
+                })
         })
     })
+    console.log('Upload promises:', uploadPromises)
+
+    try {
+        const results = await Promise.all(uploadPromises)
+        const formmattedResults = results.map((result) => ({
+            public_id: result.public_id,
+            url: result.secure_url
+        }))
+        return formmattedResults
+
+    } catch (err) {
+        throw new Error('Failed to upload files to cloudinary', err)
+    }
 }
 
 const deleteFilesFromCloudinary = async (public_ids) => {

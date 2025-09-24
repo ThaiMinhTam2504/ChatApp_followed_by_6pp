@@ -58,7 +58,8 @@ const Login = () => {
             }
         }
         const formData = new FormData();
-        formData.append('avatar', avatar.file[0])
+        formData.append('avatar', avatar.file)
+        // console.log('avatar file:', avatar.file)
         formData.append('name', name.value)
         formData.append('bio', bio.value)
         formData.append('username', username.value)
@@ -150,8 +151,6 @@ const Login = () => {
                                     }}
                                         src={avatar.preview}
                                     />
-
-
 
                                     <IconButton
                                         sx={{

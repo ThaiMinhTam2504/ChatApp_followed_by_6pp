@@ -8,6 +8,7 @@ import axios from 'axios'
 import { server } from '../constants/config'
 import { useDispatch } from 'react-redux'
 import { userNotExists } from '../../redux/reducers/auth'
+import toast from 'react-hot-toast'
 
 const Header = () => {
 
@@ -47,10 +48,11 @@ const Header = () => {
 
     const logoutHandler = async () => {
         try {
-            await axios.post(`${server}/api/v1/user/logout`, {}, { withCredentials: true })
+            const { data } = await axios.post(`${server}/api/v1/user/logout`, {}, { withCredentials: true })
+            toast.success(data.message)
             dispatch(userNotExists())
         } catch (error) {
-            console.log(error)
+            toast.error(error?.response?.data?.message || error.message || "Something went wrong")
         }
     }
     return (

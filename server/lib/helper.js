@@ -19,3 +19,6 @@ export const getSockets = (users = []) => {
     });
     return sockets.filter(Boolean); // loại bỏ undefined
 }
+
+export const getBase64 = (file) =>
+    `data:${file.mimetype};base64,${file.buffer.toString('base64')}`
