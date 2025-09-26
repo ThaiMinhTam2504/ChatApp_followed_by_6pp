@@ -3,34 +3,37 @@ import { orange } from '../constants/color'
 import React, { lazy, Suspense, useState } from 'react'
 import { Menu as MenuIcon, Search as SearchIcon, Add as AddIcon, Group as GroupIcon, Logout as LogoutIcon, Notifications as NotificationsIcon } from '@mui/icons-material'
 import { useNavigate } from 'react-router-dom'
-import Search from '../specific/Search'
 import axios from 'axios'
 import { server } from '../constants/config'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { userNotExists } from '../../redux/reducers/auth'
 import toast from 'react-hot-toast'
+import { setIsMobileMenu, setIsSearch } from '../../redux/reducers/misc'
 
 const Header = () => {
 
-    const navigate = useNavigate()
-
-    const [isMobile, setIsMobile] = useState(false)
-    const [isSearch, setIsSearch] = useState(false)
-    const [isNewGroup, setIsNewGroup] = useState(false)
-    const [isNotification, setIsNotification] = useState(false)
-    const dispatch = useDispatch()
 
     const SearchDialog = lazy(() => import('../specific/Search'))
     const NotificationDialog = lazy(() => import('../specific/Notifications'))
     const NewGroupDialog = lazy(() => import('../specific/NewGroup'))
 
+    const navigate = useNavigate()
+
+    const [isNewGroup, setIsNewGroup] = useState(false)
+    const [isNotification, setIsNotification] = useState(false)
+
+
+    const dispatch = useDispatch()
+    const { isSearch } = useSelector(state => state.misc)
+
+
     const handleMobile = () => {
-        setIsMobile(prev => !prev)
+        dispatch(setIsMobileMenu(true))
 
     }
 
     const openSearchDialog = () => {
-        setIsSearch(prev => !prev)
+        dispatch(setIsSearch(true))
     }
 
 
@@ -102,7 +105,7 @@ const Header = () => {
             {
                 isSearch && (
                     <Suspense fallback={<div>{<Backdrop open />}</div>}>
-                        <Search />
+                        <SearchDialog />
                     </Suspense>
                 )
             }

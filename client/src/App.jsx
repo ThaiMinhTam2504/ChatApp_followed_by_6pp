@@ -9,8 +9,10 @@ import { server } from './components/constants/config'
 import { useDispatch, useSelector } from 'react-redux'
 import { userExists, userNotExists } from './redux/reducers/auth'
 import { Toaster } from 'react-hot-toast'
+
 // import './index.css'
 
+const Test = lazy(() => import('./assets/testUseEffetWithSetTimeOut'))
 const Home = lazy(() => import("./pages/Home"))
 const Login = lazy(() => import("./pages/Login"))
 const Chat = lazy(() => import("./pages/Chat"))
@@ -45,7 +47,7 @@ const App = () => {
   ) : (<BrowserRouter>
     <Suspense fallback={<Loader />}>
       <Routes>
-
+        {/* <Route path='/test' element={<Test />} /> */}
         <Route element={<ProtectRoute user={user} />}>
           <Route path='/' element={<HomeWithLayOut />} />
           <Route path='/chat/:chatId' element={<ChatWithLayOut />} />

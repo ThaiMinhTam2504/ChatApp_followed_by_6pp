@@ -1,30 +1,54 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from './Header'
 import Title from '../shared/Title'
-import { Grid } from '@mui/material'
+import { Drawer, Grid, Skeleton } from '@mui/material'
 import Chatlist from '../specific/Chatlist'
 import { sampleChats } from '../constants/sampleData'
 import { useParams } from 'react-router-dom'
 import Profile from '../specific/Profile'
 import { useMyChatsQuery } from '../../redux/api/api'
+import { useDispatch, useSelector } from 'react-redux'
+import { setIsMobileMenu } from '../../redux/reducers/misc'
+import toast from 'react-hot-toast'
+import { useErrors } from '../../hooks/hook'
 
 const AppLayout = () => (WrappedComponent) => {
     return (props) => {
         const params = useParams()
         const chatId = params.chatId
 
+
+        // console.log(useMyChatsQuery(''))
         const { isLoading, data, isError, error, refetch } = useMyChatsQuery('')
 
-        console.log(data)
+        useErrors([{ isError, error }])
 
+        const { isNewGroup, isAddMember, isNotification, isMobileMenu, isSearch, isFileMenu, isDeleteMenu, uploadingLoader, selectedDeleteChat } = useSelector(state => state.misc)
+        const dispatch = useDispatch()
         const handleDeleteChat = (e, _id, groupChat) => {
 
+        }
+
+        const handleMobileClose = () => {
+            dispatch(setIsMobileMenu(false))
         }
         return (
             <>
                 <Title />
                 <Header />
 
+                {
+                    isLoading ? <Skeleton /> : (
+                        <Drawer open={isMobileMenu} onClose={handleMobileClose} >
+                            <Chatlist
+                                w='70vw'
+                                chats={data?.chats}
+                                chatId={chatId}
+                                handleDeleteChat={handleDeleteChat}
+                            />
+                        </Drawer>
+                    )
+                }
 
                 <Grid
                     container
@@ -57,15 +81,19 @@ const AppLayout = () => (WrappedComponent) => {
                         }}
                     // sx={{ display: { xs: 'none', sm: 'block' }, bgcolor: 'yellow', maxWidth: 280, flexBasis: 280, flexGrow: 0, flexShrink: 0 }}
                     >
-                        <Chatlist
-                            chats={sampleChats}
-                            chatId={chatId}
-                            newMessagesAlert={[{
-                                chatId,
-                                count: 4,
-                            }]}
-                            handleDeleteChat={handleDeleteChat}
-                        />
+                        {
+                            isLoading ? (<Skeleton />) : (
+                                <Chatlist
+                                    chats={data?.chats}
+                                    chatId={chatId}
+                                    newMessagesAlert={[{
+                                        chatId,
+                                        count: 4,
+                                    }]}
+                                    handleDeleteChat={handleDeleteChat}
+                                />
+                            )
+                        }
                     </Grid>
 
 
