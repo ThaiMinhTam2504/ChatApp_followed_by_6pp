@@ -1,6 +1,7 @@
 import { Avatar, Box, IconButton, ListItem, Stack, Typography } from '@mui/material'
 import { Add as AddIcon, Remove as RemoveIcon } from '@mui/icons-material'
 import React, { memo } from 'react'
+import { transformImage } from '../../lib/features.js'
 
 const UserItem = ({ user, handler, handlerIsLoading, isAdded, styling = {} }) => {
     const { name, _id, avatar } = user
@@ -15,7 +16,7 @@ const UserItem = ({ user, handler, handlerIsLoading, isAdded, styling = {} }) =>
                 width={"100%"}
                 {...styling}
             >
-                <Avatar />
+                <Avatar src={transformImage(avatar)} />
 
                 <Typography variant='body1' sx={{
                     flexGrow: 1,

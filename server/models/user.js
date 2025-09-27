@@ -7,6 +7,12 @@ const schema = new Schema({
         type: String,
         required: true,
     },
+    bio: {
+        type: String,
+        maxLength: 100,
+        required: false,
+    }
+    ,
     username: {
         type: String,
         required: true,

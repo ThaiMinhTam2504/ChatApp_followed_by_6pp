@@ -23,7 +23,10 @@ const AppLayout = () => (WrappedComponent) => {
 
         useErrors([{ isError, error }])
 
-        const { isNewGroup, isAddMember, isNotification, isMobileMenu, isSearch, isFileMenu, isDeleteMenu, uploadingLoader, selectedDeleteChat } = useSelector(state => state.misc)
+        const { isMobileMenu } = useSelector(state => state.misc)
+        const { user } = useSelector(state => state.auth)
+
+
         const dispatch = useDispatch()
         const handleDeleteChat = (e, _id, groupChat) => {
 
@@ -141,7 +144,7 @@ const AppLayout = () => (WrappedComponent) => {
                             }
                         }}
                     >
-                        <Profile />
+                        <Profile user={user} />
                     </Grid>
                 </Grid>
 

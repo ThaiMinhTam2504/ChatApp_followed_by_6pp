@@ -7,34 +7,37 @@ import {
 
 } from '@mui/icons-material'
 import moment from 'moment/moment'
+import { transformImage } from '../../lib/features'
 
-const Profile = () => {
+const Profile = ({ user }) => {
     return (
         <Stack spacing={'2rem'} direction={"column"} alignItems={"center"}>
-            <Avatar sx={{
-                width: 200,
-                height: 200,
-                objectFit: 'contain',
-                marginBottom: '1rem',
-                border: '5px solid white'
-            }} />
+            <Avatar
+                src={transformImage(user?.avatar?.url)}
+                sx={{
+                    width: 200,
+                    height: 200,
+                    objectFit: 'contain',
+                    marginBottom: '1rem',
+                    border: '5px solid white'
+                }} />
             <ProfileCard
                 heading={"Bio"}
-                text={"Lorem ipsum dolor sit amet."}
+                text={user?.bio || "No bio"}
             />
             <ProfileCard
                 heading={"Username"}
-                text={"@username"}
+                text={user?.username || "No username"}
                 Icon={<EmailIcon />}
             />
             <ProfileCard
                 heading={"Name"}
-                text={"Alice"}
+                text={user?.name || "No name"}
                 Icon={<FaceIcon />}
             />
             <ProfileCard
                 heading={"Joined"}
-                text={moment().subtract(2, 'years').fromNow()}
+                text={moment(user?.createdAt).fromNow()}
                 Icon={<CalendarMonthIcon />}
             />
         </Stack>
@@ -44,10 +47,10 @@ const Profile = () => {
 const ProfileCard = ({ text, Icon, heading }) => <Stack
     direction={'row'}
     alignItems={'center'}
-    spacing={'1rem'}>
+    spacing={'1rem'}
+>
     {Icon && Icon}
-
-    <Stack>
+    <Stack direction={'column'} spacing={0} alignItems={'center'}>
         <Typography variant='body1'>{text}</Typography>
         <Typography color='gray' variant='caption'>{heading}</Typography>
     </Stack>

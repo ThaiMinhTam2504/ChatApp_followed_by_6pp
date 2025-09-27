@@ -6,20 +6,24 @@ import UserItem from '../shared/UserItem'
 import { sampleUsers } from '../constants/sampleData'
 import { useDispatch, useSelector } from 'react-redux'
 import { setIsSearch } from '../../redux/reducers/misc'
-import { useLazySearchUserQuery } from '../../redux/api/api'
+import { useLazySearchUserQuery, useSendFriendRequestMutation } from '../../redux/api/api'
+import toast from 'react-hot-toast'
+import { data } from 'react-router-dom'
+import { useAsyncMutation } from '../../hooks/hook'
 
 const Search = () => {
     const dispatch = useDispatch()
     const { isSearch } = useSelector(state => state.misc)
 
     const [searchUser] = useLazySearchUserQuery()
+    const [sendFriendRequest, isLoadingSendFriendRequest,] = useAsyncMutation(useSendFriendRequestMutation)
 
     const search = useInputValidation("")
 
-    let isLoadingSendFriendRequest = false
-    const [users, setUsers] = useState(sampleUsers)
-    const addFriendHandler = () => {
+    const [users, setUsers] = useState([])
 
+    const addFriendHandler = async (id) => {
+        await sendFriendRequest("Sending friend request...", { userId: id })
     }
 
     const searchCloseHandler = () => {
@@ -29,7 +33,11 @@ const Search = () => {
     useEffect(() => {
 
         const timeOutId = setTimeout(() => {
-            console.log("searching for:", search.value)
+            // console.log("searching for:", search.value)
+
+            searchUser(search.value)
+                .then(({ data }) => setUsers(data.users))
+                .catch((err) => console.log(err))
         }, 1000)
         // console.log("this setTimeout func is called after 1 second")
 
