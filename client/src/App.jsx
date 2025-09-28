@@ -9,6 +9,7 @@ import { server } from './components/constants/config'
 import { useDispatch, useSelector } from 'react-redux'
 import { userExists, userNotExists } from './redux/reducers/auth'
 import { Toaster } from 'react-hot-toast'
+import { SocketProvider } from './socket'
 
 // import './index.css'
 
@@ -48,7 +49,11 @@ const App = () => {
     <Suspense fallback={<Loader />}>
       <Routes>
         {/* <Route path='/test' element={<Test />} /> */}
-        <Route element={<ProtectRoute user={user} />}>
+
+        <Route element={<SocketProvider>
+          <ProtectRoute user={user} />
+        </SocketProvider>}
+        >
           <Route path='/' element={<HomeWithLayOut />} />
           <Route path='/chat/:chatId' element={<ChatWithLayOut />} />
           <Route path='/groups' element={<Groups />} />

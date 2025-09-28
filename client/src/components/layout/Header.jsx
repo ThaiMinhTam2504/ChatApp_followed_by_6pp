@@ -8,7 +8,7 @@ import { server } from '../constants/config'
 import { useDispatch, useSelector } from 'react-redux'
 import { userNotExists } from '../../redux/reducers/auth'
 import toast from 'react-hot-toast'
-import { setIsMobileMenu, setIsSearch } from '../../redux/reducers/misc'
+import { setIsMobileMenu, setIsNotification, setIsSearch } from '../../redux/reducers/misc'
 
 const Header = () => {
 
@@ -20,11 +20,11 @@ const Header = () => {
     const navigate = useNavigate()
 
     const [isNewGroup, setIsNewGroup] = useState(false)
-    const [isNotification, setIsNotification] = useState(false)
 
 
     const dispatch = useDispatch()
     const { isSearch } = useSelector(state => state.misc)
+    const { isNotification } = useSelector(state => state.misc)
 
 
     const handleMobile = () => {
@@ -42,7 +42,7 @@ const Header = () => {
     }
 
     const openNotification = () => {
-        setIsNotification(prev => !prev)
+        dispatch(setIsNotification(true))
     }
 
     const navigateToGroup = () => {

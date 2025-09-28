@@ -11,23 +11,26 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setIsMobileMenu } from '../../redux/reducers/misc'
 import toast from 'react-hot-toast'
 import { useErrors } from '../../hooks/hook'
+import { getSocket } from '../../socket.jsx'
 
 const AppLayout = () => (WrappedComponent) => {
     return (props) => {
         const params = useParams()
         const chatId = params.chatId
 
+        const socket = getSocket()
+        console.log(socket.id)
 
-        // console.log(useMyChatsQuery(''))
-        const { isLoading, data, isError, error, refetch } = useMyChatsQuery('')
-
-        useErrors([{ isError, error }])
-
+        const dispatch = useDispatch()
         const { isMobileMenu } = useSelector(state => state.misc)
         const { user } = useSelector(state => state.auth)
 
+        const { isLoading, data, isError, error, refetch } = useMyChatsQuery('')
+        // console.log(useMyChatsQuery(''))
 
-        const dispatch = useDispatch()
+        useErrors([{ isError, error }])
+
+
         const handleDeleteChat = (e, _id, groupChat) => {
 
         }
