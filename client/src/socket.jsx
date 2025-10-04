@@ -3,6 +3,8 @@ import { useMemo, createContext, useContext } from 'react'
 import io from 'socket.io-client'
 import { server } from './components/constants/config'
 
+// console.log('from socket file: ', server);
+
 const SocketContext = createContext()
 
 const getSocket = () => useContext(SocketContext)

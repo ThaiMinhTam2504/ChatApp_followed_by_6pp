@@ -10,4 +10,6 @@ const corsOptions = {
     credentials: true,
 }
 
-export { corsOptions }
+const CHAT_APP_TOKEN = "chat-app-token"
+
+export { corsOptions, CHAT_APP_TOKEN }

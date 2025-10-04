@@ -15,9 +15,14 @@ export const getSockets = (users = []) => {
         // Nếu là object có _id thì lấy _id, nếu là string thì dùng luôn
         const id = typeof user === "object" ? user._id : user;
         // console.log(user)
-        return userSocketIDs.get(id?.toString());
+        return userSocketIDs.get(id?.toString()); // Sử dụng optional chaining để tránh lỗi nếu id là undefined
     });
     return sockets.filter(Boolean); // loại bỏ undefined
+}
+
+export const getSocketsOf6pp = (users = []) => {
+    const sockets = users.map((user) => userSocketIDs.get(user.toString()))
+    return sockets
 }
 
 export const getBase64 = (file) =>

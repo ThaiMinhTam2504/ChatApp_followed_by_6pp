@@ -8,16 +8,19 @@ import { createServer } from 'http'
 import { v4 as uuid } from 'uuid'
 import cors from 'cors'
 import { v2 as cloudinary } from 'cloudinary'
-
-import userRoute from './routes/user.js'
-import chatRoute from './routes/chat.js'
-import adminRoute from './routes/admin.js'
 import { createUser } from './seeders/user.js'
 import { createGroupChats, createMessages, createMessagesInAChat, createSingleChats } from './seeders/chat.js'
 import { NEW_MESSAGE, NEW_MESSAGE_ALERT } from './constants/events.js'
 import { getSockets } from './lib/helper.js'
 import { Message } from './models/message.js'
 import { corsOptions } from './constants/config.js'
+import { socketAuthenticator } from './middlewares/auth.js'
+
+
+import userRoute from './routes/user.js'
+import chatRoute from './routes/chat.js'
+import adminRoute from './routes/admin.js'
+
 
 
 
@@ -47,9 +50,7 @@ cloudinary.config({
 
 const app = express()
 const server = createServer(app)
-const io = new Server(server, {
-    cors: corsOptions
-})
+const io = new Server(server, { cors: corsOptions })
 
 //Using middlewares
 app.use(express.json())
@@ -65,15 +66,18 @@ app.use('/api/v1/admin', adminRoute)
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
-// io.use((socket, next) => {
 
-// })
+//middleware for socket.io authentication
+io.use((socket, next) => {
+    cookieParser()(socket.request, socket.request.res, async (err) => {
+        await socketAuthenticator(err, socket, next)
+    })
+})
 
+//logic for socket.io
 io.on('connection', (socket) => {
-    const user = {
-        _id: 'asdsadasd',
-        name: 'Namgon'
-    }
+    const user = socket.user //from socketAuthenticator middleware
+    console.log('User Connected: ', user.name);
     userSocketIDs.set(user._id.toString(), socket.id)
     console.log(userSocketIDs);
 
@@ -95,6 +99,10 @@ io.on('connection', (socket) => {
             sender: user._id,
             chat: chatId
         };
+        console.log('Emitting', messageForRealTime);
+        //Emmit message to all members in the chat including sender
+        // socket.to(chatId).emit(NEW_MESSAGE, messageForRealTime)
+        // socket.emit(NEW_MESSAGE, messageForRealTime)
 
         const membersSocket = getSockets(members)
         io.to(membersSocket).emit(NEW_MESSAGE, {
